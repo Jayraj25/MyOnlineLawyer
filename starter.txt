@@ -1,0 +1,21 @@
+When to create new page made with extension .php(we will try not to extend with .html)
+
+Refer to blank.php
+###############
+1.Create the title of the page
+2.Put your content in the container class division 
+3.Put the footer at the bootom of the page as shown in blank.php
+###############
+
+#########Variable Naming convention########
+
+1.page name : lower case
+2.varible name : Snakecase "this_is_example"
+3.function name : Camelcase "thisIsExample"
+4.Class Name :   "ThisIsClass"
+
+
+###########################
+
+
+###### Happy Development #######
