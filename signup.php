@@ -94,7 +94,7 @@ $title = "Sign Up";
 <div class="jumbotron">
     <div class="row">
     <div class="col-sm-6">
-        <form name="reg_form" action="" method="POST">
+        <form name="reg_form" action="signupdb.php" method="POST">
             <div class="card">
                 <div class="card-header">
                     <span>
@@ -108,15 +108,16 @@ $title = "Sign Up";
                         <label for="password">Password:</label><input type="password" class="form-control" name="pass" id="my_pass">
                         <label for="password">Confirm Password:</label><input type="password" class="form-control" name="conf_pass" id="conf_my_pass">
                         <label for="email">Email</label><input type="text" class="form-control" name="email" id="my_email">
-                        <label for="mobnum">Mobile no:</label><input type="number" class="form-control" name="mobnum" id="my_mobnum"><br>
+                        <label for="mobnum">Mobile no:</label><input type="text" class="form-control" name="mobnum" id="my_mobnum"><br>
                         <label for="Type">Type:</label>
-                            <select class="custom-select">
+                            <select class="custom-select" name="type">
                                 <option selected>Select type</option>
                                 <option value="Advocate">Advocate</option>
                                 <option value="Client">Client</option>
                             </select>
                     </div>
                 </div>
+                <button type="submit" name="submit" class="btn btn-primary" style="margin-left: 15px;margin-right: 15px;margin-bottom: 10px;" >Submit</button>
             </div>
         </form>
     </div>
