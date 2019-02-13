@@ -5,6 +5,11 @@ $title = "blank page";
 
 <div class="container">
     hello
+    <?php
+    //Using Sessions
+    session_start();
+    print_r($_SESSION['user_info']);
+    ?>
 </div>
 
 <?php include "footer.php" ?>
