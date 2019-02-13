@@ -1,4 +1,3 @@
-
 <html lang="en">
 
 <head>
@@ -8,15 +7,16 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title><?php echo $title; ?></title>
+  <title>
+    <?php echo $title; ?>
+  </title>
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Custom styles for this template -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"><!-- Custom styles for this template -->
   <link href="css/modern-business.css" rel="stylesheet">
 
-    <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 
@@ -80,9 +80,24 @@
               <a class="dropdown-item" href="pricing.html">Pricing Table</a>
             </div>
           </li>
+          <?php
+          session_start();
+          if (!isset($_SESSION['is_logged_in'])) {
+            $_SESSION['is_logged_in'] = false;
+          }
+          if ($_SESSION['is_logged_in']) {
+            echo "<li class='nav-item '>
+                <a class='nav-link' href='logout.php'><span class='fa fa-sign-out'></span>Logout</a>
+              </li>";
+          } else {
+            echo "<li class='nav-item '>
+            <a class='nav-link' href='login.php'><span class='fa fa-sign-in'></span>Login</a>
+          </li>";
+          }
+          ?>
+
         </ul>
       </div>
     </div>
   </nav>
   <header>
-      

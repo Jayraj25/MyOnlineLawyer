@@ -31,7 +31,6 @@ if (isset($_POST['submit'])) {
         } else {
             echo "You are Successfully logged in";
             //Saving the information in the sessions
-            session_start();
             $_SESSION['is_logged_in'] = true;
             $_SESSION['user_info'] = $row;
             $_SESSION['user_type'] = $row['type'];
