@@ -153,7 +153,7 @@ if (isset($_POST['submit'])) {
 
                 <div class="form-group">
                     <input type="submit" name="btn" value="Login" class="btn btn-success float-right login_btn">
-                    <a href="signup.php" input type="submit" name="btn" value="Signup" class="btn btn-success float-left login_btn">
+                    <input type="submit" name="btn" value="Signup" class="btn btn-success float-left login_btn">
                 </div>
 
             </form>
