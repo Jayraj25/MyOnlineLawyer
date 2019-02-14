@@ -87,11 +87,11 @@
           }
           if ($_SESSION['is_logged_in']) {
             echo "<li class='nav-item '>
-                <a class='nav-link' href='logout.php'><span class='fa fa-sign-out'></span>Logout</a>
+                <a class='nav-link' href='logout.php'><span class='fa fa-sign-out'></span> Logout</a>
               </li>";
           } else {
             echo "<li class='nav-item '>
-            <a class='nav-link' href='login.php'><span class='fa fa-sign-in'></span>Login</a>
+            <a class='nav-link' href='login.php'><span class='fa fa fa-reply'></span> Login</a>
           </li>";
           }
           ?>
