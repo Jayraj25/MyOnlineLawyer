@@ -43,17 +43,119 @@ if (isset($_POST['submit'])) {
 
 
 ?>
-<div class="container">
-    <div class="jumbotron">
-        <form method="POST" action="login.php">
-            <label class="form-group" for="username">Username:</label>
-            <input class="form-control" type="text" name="username">
-            <label class="form-group" for="username">Password:</label>
-            <input class="form-control" type="password" name="password">
-            <br>
-            <button class="btn btn-info" type="submit" name="submit">Submit</button>
+<style>
 
-        </form>
+    body {
+        background-image: url('static/giammarco-boscaro-380907-unsplash.jpg');
+        background-size: cover;
+    }
+   
+    .card-login {
+        margin-top: 130px;
+        padding: 18px;
+        max-width: 30rem;
+    }
+
+    .card-header {
+        color: #fff;
+        /*background: #ff0000;*/
+        font-family: sans-serif;
+        font-size: 20px;
+        font-weight: 600 !important;
+        margin-top: 10px;
+        border-bottom: 0;
+    }
+    .input-group-prepend span{
+        width: 50px;
+        background-color:#495057;
+        color: #fff;
+        border:0 !important;
+        border-radius: 50%;
+    }
+
+    input:focus{
+        outline: 0 0 0 0  !important;
+        box-shadow: 0 0 0 0 !important;
+    }
+
+    .login_btn{
+        width: 130px;
+    }
+
+    .login_btn:hover{
+        color: #fff;
+        background-color: #126d27;
+    }
+
+    .btn-outline-danger {
+        color: #fff;
+        font-size: 18px;
+        background-color: #28a745;
+        background-image: none;
+        border-color: #28a745;
+    }
+
+    .form-control {
+        display: block;
+        width: 100%;
+        height: calc(2.25rem + 2px);
+        padding: 0.375rem 0.75rem;
+        font-size: 1.2rem;
+        line-height: 1.6;
+        color: #28a745;
+        background-color: transparent;
+        background-clip: padding-box;
+        border: 1px solid #28a745;
+        border-radius: 0;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+
+    .input-group-text {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-align: center;
+        align-items: center;
+        padding: 0.375rem 0.75rem;
+        margin-bottom: 0;
+        font-size: 1.5rem;
+        font-weight: 700;
+        line-height: 1.6;
+        color: #495057; 
+        text-align: center;
+        white-space: nowrap;
+        background-color: #e9ecef;
+        border: 1px solid #ced4da;
+        border-radius: 0;
+    }
+
+</style>
+
+
+<div class="container">
+    <div class="card card-login mx-auto text-center" style="background-color: #ededed;border-radius:10px;">
+        <div class="card-header mx-auto bg-dark" style="border-radius:20px;">Login</div>
+        <div class="card-body">
+            <form action="" method="post">
+                <div class="input-group form-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-user"></i></span>
+                    </div>
+                    <input type="text" name="email" class="form-control" placeholder="Username">
+                </div>
+
+                <div class="input-group form-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-key"></i></span>
+                    </div>
+                    <input type="password" name="password" class="form-control" placeholder="Password">
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" name="btn" value="Login" class="btn btn-success float-right login_btn">
+                </div>
+
+            </form>
+        </div>
     </div>
 </div>
 
