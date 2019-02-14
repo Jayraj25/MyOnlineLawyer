@@ -20,5 +20,3 @@ $title = "Index";
 
 <?php include "footer.php" ?>
 
-
-
