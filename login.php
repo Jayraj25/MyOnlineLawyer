@@ -135,12 +135,12 @@ if (isset($_POST['submit'])) {
     <div class="card card-login mx-auto text-center" style="background-color: #ededed;border-radius:10px;">
         <div class="card-header mx-auto bg-dark" style="border-radius:20px;">Login</div>
         <div class="card-body">
-            <form action="" method="post">
+            <form action="login.php" method="POST">
                 <div class="input-group form-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-user"></i></span>
                     </div>
-                    <input type="text" name="email" class="form-control" placeholder="Username">
+                    <input type="text" name="username" class="form-control" placeholder="Username">
                 </div>
 
                 <div class="input-group form-group">
@@ -151,7 +151,7 @@ if (isset($_POST['submit'])) {
                 </div>
 
                 <div class="form-group">
-                    <input type="submit" name="btn" value="Login" class="btn btn-success float-right login_btn">
+                    <input type="submit" name="submit" value="Login" class="btn btn-success float-right login_btn">
                 </div>
 
             </form>
