@@ -88,8 +88,8 @@ $title = "Sign Up";
     <?php
     //Using Sessions
     //session_start();
-    if(!$_SESSION['is_logged_in']){
-    ?>
+    if (!$_SESSION['is_logged_in']) {
+        ?>
      
 <div class="jumbotron">
     <div class="row">
@@ -168,14 +168,15 @@ $title = "Sign Up";
         slideIndex++;
         if (slideIndex > slides.length) {slideIndex = 1} 
         slides[slideIndex-1].style.display = "block"; 
-        setTimeout(showSlides, 2000); // Change image every 2 seconds
+        setTimeout(showSlides, 5000); // Change image every 2 seconds
     }
         </script>
         
 
-    <?php }  else {
+    <?php 
+} else {
         # code...
-        echo '<script>window.open("blank.php","_self")</script>';
-    }?>
+    echo '<script>window.open("blank.php","_self")</script>';
+} ?>
 
 <?php include "footer.php" ?>

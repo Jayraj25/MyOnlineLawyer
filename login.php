@@ -25,7 +25,7 @@ if (isset($_POST['submit'])) {
         echo $username_error;
     } else {
         $row = mysqli_fetch_assoc($result);
-        if ($row['password'] != $password) {
+        if ($row['password'] != $encript_pwd) {
             $pwd_error = "Invalid Password";
             echo $pwd_error;
         } else {
