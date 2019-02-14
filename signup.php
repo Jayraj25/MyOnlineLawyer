@@ -2,7 +2,81 @@
 $title = "Sign Up";
 ?>
 <?php include "header.php" ?>
+<?php include "dbcon.php" ?>
+<?php
+    //Using Sessions
+if (!$_SESSION['is_logged_in']) {
 
+    if (isset($_POST['submit'])) {
+        $name = $_POST['name'];
+        $user_name = $_POST['user_name'];
+        $pass = $_POST['pass'];
+        $email = $_POST['email'];
+        $mobnum = $_POST['mobnum'];
+        $type = $_POST['type'];
+        //Check wheter it is admin or not
+
+        $hashFormat = "$2y$10$";
+        $salt = "thisisshashwatsanket12"; //length should be 22
+        $create_crypt = $hashFormat . $salt;
+        $encript_pwd1 = crypt($pass, $create_crypt);
+
+        $query = "INSERT INTO users(name,username,password,email,mobileNo,type) ";
+        $query .= "VALUES ('$name','$user_name','$encript_pwd1','$email','$mobnum','$type')";
+
+        $errors = false;
+        //Username check 
+        $query_check = "select * from users where username='$user_name'";
+        $result = mysqli_query($connection, $query_check);
+        if (!$result) {
+            die("QUERY FAILED " . mysqli_error($connection));
+        }
+        if (mysqli_num_rows($result) > 0) {
+            $username_error = "Username alredy exist";
+            echo $username_error;
+            $errors = true;
+        }
+        //Mobile No check 
+        $query_check = "select * from users where mobileNo='$mobnum'";
+        $result = mysqli_query($connection, $query_check);
+        if (!$result) {
+            die("QUERY FAILED " . mysqli_error($connection));
+        }
+        if (mysqli_num_rows($result) > 0) {
+            $mobileNo_error = "Mobile Number alredy exist";
+            echo $mobileNo_error;
+            $errors = true;
+        }
+        //Email check 
+        $query_check = "select * from users where email='$email'";
+        $result = mysqli_query($connection, $query_check);
+        if (!$result) {
+            die("QUERY FAILED " . mysqli_error($connection));
+        }
+        if (mysqli_num_rows($result) > 0) {
+            $email_error = "Email alredy exist";
+            echo $email_error;
+            $errors = true;
+        }
+        if (!$errors) {
+            $_SESSION['insertion_query'] = $query;
+            $_SESSION['mobileNo'] = $mobnum;
+            $_SESSION['user_name'] = $user_name;
+            $otp = rand(500000, 999999);
+            $message = urlencode("User Verification OTP for MyOnlineLawyer is " . $otp);
+            $url = "http://sambsms.com/app/smsapi/index.php?key=558CA4B80010C7&campaign=0&routeid=26&type=text&contacts=$mobnum&senderid=COMEXc&msg=$message";
+            $response = file_get_contents($url);
+            $_SESSION['otp'] = $otp;
+
+            echo '<script>window.open("otp_verification.php","_self")</script>';
+        }
+    }
+
+} else {
+    echo '<script>window.open("blank.php","_self")</script>';
+}
+
+?>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 
@@ -94,7 +168,7 @@ $title = "Sign Up";
 <div class="jumbotron">
     <div class="row">
     <div class="col-sm-6">
-        <form name="reg_form" action="signupdb.php" method="POST">
+        <form name="reg_form" action="signup.php" method="POST">
             <div class="card">
                 <div class="card-header">
                     <span>
