@@ -130,7 +130,8 @@ if (isset($_POST['submit'])) {
 
 </style>
 
-
+<div class="container">
+    <p>My online Lawyer</p>
 <div class="container">
     <div class="card card-login mx-auto text-center" style="background-color: #ededed;border-radius:10px;">
         <div class="card-header mx-auto bg-dark" style="border-radius:20px;">Login</div>
@@ -152,6 +153,7 @@ if (isset($_POST['submit'])) {
 
                 <div class="form-group">
                     <input type="submit" name="btn" value="Login" class="btn btn-success float-right login_btn">
+                    <input type="submit" name="btn" value="Signup" class="btn btn-success float-left login_btn">
                 </div>
 
             </form>
