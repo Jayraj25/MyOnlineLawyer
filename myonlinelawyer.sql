@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 14, 2019 at 08:56 AM
+-- Generation Time: Feb 15, 2019 at 11:34 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -43,9 +43,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `username`, `password`, `email`, `mobileNo`, `type`) VALUES
-(4, 'c1', 'c1', '$2y$10$thisisshashwatsanket1u4bQ9/MjkEfb8WXCKXR8xTpXELL5DYNu', 'shashwat.sanket2017@vitstudent.ac.in', '9162812183', 'Client'),
-(5, 'root1', 'c2', '$2y$10$thisisshashwatsanket1uA9XAwH11l./6MK6ZPgo0c9OAFm5/v6m', 'wer@gmail.com', '9090899032', 'Client'),
-(6, 'Shashwat Sanket', 'root', '$2y$10$thisisshashwatsanket1u4bQ9/MjkEfb8WXCKXR8xTpXELL5DYNu', 'shashwatsanket997@gmail.com', '9162812185', 'admin');
+(15, 'Shashwat Sanket', 'admin', '$2y$10$thisisshashwatsanket1u4bQ9/MjkEfb8WXCKXR8xTpXELL5DYNu', 'shashwatsanket997@gmail.com', '9162812185', 'Advocate'),
+(16, 'Sanket', 'admin211', '$2y$10$thisisshashwatsanket1u4bQ9/MjkEfb8WXCKXR8xTpXELL5DYNu', 'shashwat#sanket997@gmail.com', '8523697412', 'Client'),
+(17, 'sanket', 'admin65656', '$2y$10$thisisshashwatsanket1u9O6dpc6bu9KSk.g4/4tnUZ55D1mhvrm', 'shaswat.sankey997@gmail.com', '9455041618', 'Advocate'),
+(18, 'client ', 'user_name', '$2y$10$thisisshashwatsanket1u9O6dpc6bu9KSk.g4/4tnUZ55D1mhvrm', 'shashwat.sanket78@gmail.com', '8563241452', 'Client');
 
 --
 -- Indexes for dumped tables
@@ -66,7 +67,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

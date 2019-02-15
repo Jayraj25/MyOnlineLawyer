@@ -68,7 +68,7 @@ if (!$_SESSION['is_logged_in']) {
             $otp = rand(500000, 999999);
             $message = urlencode("User Verification OTP for MyOnlineLawyer is " . $otp);
             $url = "http://sambsms.com/app/smsapi/index.php?key=558CA4B80010C7&campaign=0&routeid=26&type=text&contacts=$mobnum&senderid=COMEXc&msg=$message";
-            $response = file_get_contents($url);
+            //$response = file_get_contents($url);
             $_SESSION['otp'] = $otp;
             echo '<script>window.open("otp_verification.php","_self")</script>';
 
