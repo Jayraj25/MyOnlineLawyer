@@ -46,7 +46,7 @@ if (isset($_POST['submit'])) {
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <form method="POST" action="ola.php">
+                    <form name="advice" onsubmit="return validation()" method="POST" action="ola.php">
                         <div class="form-group">
                             <label for="heading">Heading</label>
                             <input type="text" class="form-control" name="heading" id="heading" placeholder="Enter heading">
@@ -83,9 +83,9 @@ if (isset($_POST['submit'])) {
                             <input type="text" class="form-control" name="city" id="city" placeholder="Enter Nearest City">
                         </div>
                         <div class="form-group">
-                            <label for="description">Description</label>
-                            <textarea class="form-control" id="description" name='description' rows="5"></textarea>
-                            <input type="text" placeholder="Total Char Count: 600" disabled>
+                        <h3>Description</h3>
+                        	<textarea class="form-control"  id="description" name='description' placeholder="Type here to see how it work" rows="5" onkeydown="limitText(this.form.description,this.form.countdown,600);" onkeyup='limitText(this.form.description,this.form.countdown,600);'>	
+                        	</textarea>You have<input readonly type="text" name="countdown" size="3" value="600"> chars left
                         </div>
 
                 </div>
@@ -140,6 +140,42 @@ if (isset($_POST['submit'])) {
         var input = document.getElementById('city');
         var autocomplete = new google.maps.places.Autocomplete(input);
     }
+    function validation(){
+	var heading = document.forms["advice"]["heading"];               
+    var topic = document.forms["advice"]["topic"];    
+    var city = document.forms["advice"]["city"]; 
+    if (heading.value == "")                                  
+    { 
+        window.alert("Please enter heading");
+        return false; 
+    } 
+    
+    if((heading.value.length <= 2) || (heading.value.length > 20)) {
+		alert("heading lenght must be between 2 and 20"); 
+        heading.focus(); 
+        return false;		
+		}
+    if(document.advice.topic.selectedIndex==0)
+    {
+          alert("Please enter your topic"); 
+        topic.focus(); 
+        return false;
+    }
+	if (city.value == "")                                  
+    { 
+        window.alert("Please enter city");
+        return false; 
+    }  
+	
+
+}
+	function limitText(limitField, limitCount, limitNum) {
+          if (limitField.value.length > limitNum) {
+            limitField.value = limitField.value.substring(0, limitNum);
+          } else {
+            limitCount.value = limitNum - limitField.value.length;
+          }
+        }
 </script>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJ5ELIUvC5xcx1itdQBE1CIXgU_Tewoko&libraries=places&callback=cityAuto"></script>
 <?php include "footer.php" ?>
