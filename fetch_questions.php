@@ -143,17 +143,18 @@ while ($row = mysqli_fetch_assoc($result)) {
     function q_like(q_id) {
         var btn_id = 'btn-' + q_id;
         var button = "button-" + q_id;
-        document.getElementById(button).disabled = true;
+        var user_id = "<?php echo $_SESSION['user_info']['id']; ?>";
         $.ajax({
             url: "ques_like.php",
             method: "POST",
             data: {
-                'q_id': q_id
+                'q_id': q_id,
+                'user_id':user_id,
             },
             success: function (data) {
-                console.log(data);
+                if(data!='0'){
                 document.getElementById(btn_id).innerHTML = data;
-            }
+            }}
 
         })
 
@@ -164,17 +165,18 @@ while ($row = mysqli_fetch_assoc($result)) {
     function ans_like(ans_id) {
         var btn_id = 'abtn-' + ans_id;
         var button = "abutton-" + ans_id;
-        document.getElementById(button).disabled = true;
+        var user_id = "<?php echo $_SESSION['user_info']['id']; ?>";
         $.ajax({
             url: "ans_like.php",
             method: "POST",
             data: {
-                'a_id': ans_id
+                'a_id': ans_id,
+                'user_id':user_id,
             },
             success: function (data) {
-                console.log(data);
+                if(data!='0'){
                 document.getElementById(btn_id).innerHTML = data;
-            }
+            }}
 
         })
 
