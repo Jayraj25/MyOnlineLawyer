@@ -4,7 +4,7 @@ $title = "Index";
 <?php include "header.php" ?>
 <?php include "dbcon.php" ?>
 
-<div class="container">
+
     <?php
     if ($_SESSION['is_logged_in']) {
         ?>
@@ -13,6 +13,45 @@ $title = "Index";
 
 } else {
     //echo "<h1>Hello Not</h1>";?>
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <!-- Slide One - Set the background image for this slide in the line below -->
+        <div class="carousel-item active" style="background-image: url('static/imgcorousel.jpg')">
+          <div class="carousel-caption d-none d-md-block">
+            <h3>First Slide</h3>
+            <p>This is a description for the first slide.</p>
+          </div>
+        </div>
+        <!-- Slide Two - Set the background image for this slide in the line below -->
+        <div class="carousel-item" style="background-image: url('static/img.jpg')">
+          <div class="carousel-caption d-none d-md-block">
+            <h3>Second Slide</h3>
+            <p>This is a description for the second slide.</p>
+          </div>
+        </div>
+        <!-- Slide Three - Set the background image for this slide in the line below -->
+        <div class="carousel-item" style="background-image: url('static/imgcorousel1.jpg')">
+          <div class="carousel-caption d-none d-md-block">
+            <h3>Third Slide</h3>
+            <p>This is a description for the third slide.</p>
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+<div class="container">
     <div class="jumbotron" style="margin-top: 10px;">
         <div class="input-group">
             <input type="text" class="form-control" placeholder="Type City (Ex: Chennai)">
@@ -41,9 +80,9 @@ $title = "Index";
                 <!--Title-->
                 <h4 class="card-title">Online Legal Advice</h4>
                 <!--Text-->
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <p class="card-text">Want Some Advice?</p>
                 <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-                <button type="button" class="btn btn-primary">Read more</button>
+                <button type="button" class="btn btn-primary">Ask Question</button>
         
             </div>
         
