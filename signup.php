@@ -25,7 +25,10 @@ if (!$_SESSION['is_logged_in']) {
         $encript_pwd1 = crypt($pass, $create_crypt);
         $query = "INSERT INTO users(name,username,password,email,mobileNo,type) ";
         $query .= "VALUES ('$name','$user_name','$encript_pwd1','$email','$mobnum','$type')";
-        $errors = false;
+		//$id=$_SESSION['user_info']['id'];
+		//echo "$id";
+        //$query1 = "INSERT INTO `adv_profile` (`id`,`name`,`email`,`cemail`,`mob`) VALUES ('$id','$name','$email','$cemail','$mobnum')";
+        $errors =false;
        //Username check 
         $query_check = "select * from users where username='$user_name'";
         $result = mysqli_query($connection, $query_check);
@@ -315,10 +318,10 @@ if (!$_SESSION['is_logged_in']) {
         password.focus(); 
         return false; 
     }
-    var pass=/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^\w\s]).{8,}$/;
+    var pass=/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{6,}$/;
     if(pass.test(password.value)==false)
     {
-    	window.alert("Password should include an uppercase,a lowercase,a number and a special character"); 
+    	window.alert("Password should include an uppercase,a lowercase and a number "); 
         password.focus(); 
         return false;
     } 
