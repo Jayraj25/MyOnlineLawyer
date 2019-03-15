@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 13, 2019 at 06:15 PM
+-- Generation Time: Mar 15, 2019 at 09:08 AM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -46,8 +46,19 @@ CREATE TABLE `adv_profile` (
   `pcourts` varchar(20) NOT NULL,
   `lang` varchar(50) NOT NULL,
   `bcno` int(10) NOT NULL,
-  `img` varchar(30) NOT NULL
+  `img` varchar(30) NOT NULL,
+  `likes` int(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `adv_profile`
+--
+
+INSERT INTO `adv_profile` (`id`, `name`, `gender`, `email`, `cemail`, `mob`, `addr`, `website`, `pcity`, `area`, `pin`, `edudetails`, `exp`, `spec`, `pcourts`, `lang`, `bcno`, `img`, `likes`) VALUES
+(3, 'Aayush Agarwal', 'Male', 'aayush.agarwal', 'dfghjk', 852014782, 'sdfghjk', 'xcvbnm,.', 'cvbnm', 'xcvbnm,', 'cvbnm', 'xcvbnm,', 5, 'sdfghjkl', 'xcvbnm,', 'bnm,.', 852165, 'vdycas.j[g', 0),
+(6, 'Pankaj Mangla', '', 'pankajmangla10@gmail', 'pankajmangla10@gmail', 2147483647, '', '', '', 'jkbsi', '', '', 0, '', '', '', 0, '', 0),
+(6, 'Pankaj Mangla', '', 'pankajmangla10@gmail', 'pankajmangla10@gmail', 2147483647, '', '', '', 'jkbsi', '', '', 0, '', '', '', 0, '', 0),
+(5, 'Ashray ', 'male', 'ashrayyoboy@gmail.co', 'ashrayyoboy@gmail.co', 2147483647, '', '', '', '', '', '', 0, '', '', '', 0, '', 0);
 
 -- --------------------------------------------------------
 
@@ -158,7 +169,9 @@ INSERT INTO `ques_like_details` (`id`, `q_id`, `user_id`) VALUES
 (0, 5, 4),
 (0, 7, 4),
 (0, 8, 4),
-(0, 0, 4);
+(0, 0, 4),
+(0, 3, 8),
+(0, 6, 8);
 
 -- --------------------------------------------------------
 
@@ -185,7 +198,10 @@ INSERT INTO `users` (`id`, `name`, `username`, `password`, `email`, `mobileNo`, 
 (2, 'Jayraj Thakor', 'admin', 'asdf@1007', 'jayrajthakor998@gmail.com', '9080787890', 'admin'),
 (3, 'Aayush Agarwal', 'aayush1936', 'aayush', 'aayush.agarwal1936@gmail.com', '8100258835', 'Client'),
 (4, 'Ankush Agarwal', 'aaa999', '$2y$10$thisisshashwatsanket1ucz50kYhtd0lQ4sGlLGrvVVtAWfCTb1e', 'hackerboy2908@gmail.com', '9143163826', 'Advocate'),
-(5, 'Ashray Saluja', 'ash99', '$2y$10$thisisshashwatsanket1u9baQKpOh7RpWsxO.3cm3krrDECdSIR2', 'ashrayyoboy@gmail.com', '7854123658', 'Advocate');
+(5, 'Ashray Saluja', 'ash99', '$2y$10$thisisshashwatsanket1u9baQKpOh7RpWsxO.3cm3krrDECdSIR2', 'ashrayyoboy@gmail.com', '7854123658', 'Advocate'),
+(6, 'Pankaj Mangla', 'pank123', '$2y$10$thisisshashwatsanket1uW7wC3WV2KTgevNGlERToGfRg6BmYJEu', 'pankajmangla10@gmail.com', '9874563210', 'Client'),
+(7, 'Himan', 'Himan123', '$2y$10$thisisshashwatsanket1uUhnrf1B534l8Bcxa9DVM3YUNVSNrkPm', 'himan@gmail.com', '9145236852', 'Advocate'),
+(8, 'Yoboy', 'qwer', '$2y$10$thisisshashwatsanket1u.vcDgV.LCGlW86Gel8BQlbIPCJN1.ee', 'xyz@gmail.com', '7854123645', 'Client');
 
 --
 -- Indexes for dumped tables
@@ -212,7 +228,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables
