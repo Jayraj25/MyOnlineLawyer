@@ -265,6 +265,7 @@ if (!$_SESSION['is_logged_in']) {
                         <span class="input-group-text"><i class="fas fa-id-card"></i></span>
                     </div>
                     <input type="text" name="cnum" class="form-control" placeholder="Bar Council Number "><br>
+					
                 </div>
 		
                 <div class="form-group">
