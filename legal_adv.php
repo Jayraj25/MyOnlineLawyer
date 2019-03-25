@@ -42,9 +42,9 @@ if (isset($_POST['submit'])) {
 
     <ol class="breadcrumb">
         <li class="breadcrumb-item">
-            <a href="index.html">Home</a>
+            <a href="index.php">Home</a>
         </li>
-        <li class="breadcrumb-item active">Online Leagel Advice / Search Advocate</li>
+        <li class="breadcrumb-item active">Online Legal Advice / Search Advocate</li>
     </ol>
 
     <!-- Image Header -->

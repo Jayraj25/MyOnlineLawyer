@@ -282,13 +282,12 @@ if (!$_SESSION['is_logged_in']) {
         <div class="card-header mx-auto bg-dark" style="border-radius:20px;">My Profile</div>
         <div class="card-body">
             <form action="tst.php" method="POST" encrypt="multipart/form-data">
-			<div style="border:dotted ;border-color:black; margin:10px ;padding:10px">
-			<img src="user.png" height="150px" width="50px" onclick="image(this)" id="img1"><br>
-			<img src="s5.png" height="40px" width="350px" id="img2">
-			</div>
-			<br><input type="file" name="image" id="image"><br>
-			<input type="button" name="upload" value="Upload" onclick="abc()">
-			
+                <div style="border:dotted ;border-color:black; margin:10px ;padding:10px">
+                    <img src="user.png" height="150px" width="50px" onclick="image(this)" id="img1"><br>
+                    <img src="s5.png" height="40px" width="350px" id="img2">
+                </div>
+                <br><input type="file" name="image" id="image"><br>
+                <input type="button" name="upload" value="Upload" onclick="abc()">
 			</form>
 		</div>
 		</div>
