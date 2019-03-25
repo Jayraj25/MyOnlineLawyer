@@ -6,7 +6,6 @@ $title = "Sign Up";
 <?php
 
     //Using Sessions
-
 if (!$_SESSION['is_logged_in']) {
 
     if (isset($_POST['submit'])) {
@@ -26,7 +25,10 @@ if (!$_SESSION['is_logged_in']) {
         $encript_pwd1 = crypt($pass, $create_crypt);
         $query = "INSERT INTO users(name,username,password,email,mobileNo,type) ";
         $query .= "VALUES ('$name','$user_name','$encript_pwd1','$email','$mobnum','$type')";
-        $errors = false;
+		//$id=$_SESSION['user_info']['id'];
+		//echo "$id";
+        //$query1 = "INSERT INTO `adv_profile` (`id`,`name`,`email`,`cemail`,`mob`) VALUES ('$id','$name','$email','$cemail','$mobnum')";
+        $errors =false;
        //Username check 
         $query_check = "select * from users where username='$user_name'";
         $result = mysqli_query($connection, $query_check);
@@ -35,7 +37,6 @@ if (!$_SESSION['is_logged_in']) {
         }
         if (mysqli_num_rows($result) > 0) {
             $username_error = "Username alredy exist";
-            echo $username_error;
             $errors = true;
         }
         //Mobile No check 
@@ -180,7 +181,20 @@ if (!$_SESSION['is_logged_in']) {
     <div class="col-sm-6">
         <form name="reg_form" action="signup.php" onsubmit="return validation()" method="POST">
             <div class="card">
-                <div class="card-header">
+            <div class="card-header">
+                <?php 
+                if($errors){
+                ?>
+                    <div class="alert alert-danger">
+                    <?php
+                    if(isset($username_error)){
+                        echo $username_error;
+                    }
+                    ?>    
+                </div>
+                <?php 
+                }
+                ?>
                     <span>
                         <h4><i class="fa fa-address-card">&nbsp;Registration form</i></h4>
                     </span>
@@ -304,10 +318,10 @@ if (!$_SESSION['is_logged_in']) {
         password.focus(); 
         return false; 
     }
-    var pass=/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^\w\s]).{8,}$/;
+    var pass=/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{6,}$/;
     if(pass.test(password.value)==false)
     {
-    	window.alert("Password should include an uppercase,a lowercase,a number and a special character"); 
+    	window.alert("Password should include an uppercase,a lowercase and a number "); 
         password.focus(); 
         return false;
     } 
