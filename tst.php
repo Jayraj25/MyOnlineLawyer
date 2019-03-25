@@ -22,6 +22,9 @@ if (!$_SESSION['is_logged_in']) {
 }
 ?>
 
+
+
+
 <?php	
     if (isset($_POST['submit'])) {
 	
@@ -277,7 +280,7 @@ if (!$_SESSION['is_logged_in']) {
     </div>
 
 	</div>
-<div class="container">
+<!--<div class="container">
     <div class="card card-login mx-auto text-center " style="background-color: #ededed;border-radius:10px;float:right;width: 75%;">
         <div class="card-header mx-auto bg-dark" style="border-radius:20px;">My Profile</div>
         <div class="card-body">
@@ -288,6 +291,38 @@ if (!$_SESSION['is_logged_in']) {
                 </div>
                 <br><input type="file" name="image" id="image"><br>
                 <input type="button" name="upload" value="Upload" onclick="abc()">
+			</form>
+		</div>
+		</div>
+	</div>
+</div>-->
+<div class="container">
+    <div class="card card-login mx-auto text-center " style="background-color: #ededed;border-radius:10px;float:right;width: 75%;">
+        <div class="card-header mx-auto bg-dark" style="border-radius:20px;">My Profile</div>
+        <div class="card-body">
+            <form action="tst.php" method="POST" encrypt="multipart/form-data">
+			<div style="border:dotted ;border-color:black; margin:10px ;padding:10px">
+			<input type="hidden" name="size" value="1000000">
+			</div>
+			<br><input type="file" name="image"><br>
+			<input type="submit" name="upload" value="Upload">
+			<?php
+	if(isset($_POST['upload']))
+	{
+		$image=$_FILES['image']['name'];
+		if(isset($image) && !empty($name))
+		{
+		$target="images/".basename($_FILES['image']['name']);
+		//$image=$_FILES['image']['name'];
+		$sql="INSERT INTO adv_profile (img) VALUES ($image)";
+		mysqli_query($connection,$sql);
+		if(move_uploaded_file($_FILES['image']['tmp_name'],$target,$_FILES['image']['name']))
+		{
+			echo "Image Uploaded";
+		}
+		}
+	}
+?>
 			</form>
 		</div>
 		</div>
