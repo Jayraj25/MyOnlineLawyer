@@ -7,7 +7,6 @@ $title = "Dashboard";
 
 <div class="container-fluid">
 
-<h1 class="h3 mb-0 text-gray-800">Blank Page</h1>
 <div class="container-fluid">
 
     <!-- Page Heading -->
@@ -102,6 +101,9 @@ $title = "Dashboard";
     <div class="row">
       <div class="col-xl-8 col-lg-7">
         <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Colors</h6>
+            </div>
             <div class="row" style="margin-top:20px;margin-left: 20px;margin-right: 20px;">
                 <div class="col-lg-4 mb-4">
                     <div class="card bg-primary text-white shadow">
@@ -145,10 +147,34 @@ $title = "Dashboard";
                 </div>
                 <div class="col-lg-4 mb-4">
                     <div class="card bg-secondary text-white shadow">
-                    <div class="card-body">
-                        Secondary
-                        <div class="text-white-50 small">#858796</div>
+                        <div class="card-body">
+                            Secondary
+                            <div class="text-white-50 small">#858796</div>
+                        </div>
                     </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="card bg-primary text-white shadow">
+                        <div class="card-body">
+                            Primary
+                            <div class="text-white-50 small">#4e73df</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="card bg-success text-white shadow">
+                        <div class="card-body">
+                            Success
+                            <div class="text-white-50 small">#1cc88a</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="card bg-info text-white shadow">
+                        <div class="card-body">
+                            Info
+                            <div class="text-white-50 small">#36b9cc</div>
+                        </div>
                     </div>
                 </div>
             </div>
