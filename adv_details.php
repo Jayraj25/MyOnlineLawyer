@@ -8,6 +8,14 @@ if (!$result) {
     die("QUERY FAILED " . mysqli_error($connection));
 }
 ?>
+<script>
+function searchcity()
+{
+	var input=document.getElementById("search_city");
+	var autocomplete=new google.maps.places.Autocomplete(input);
+}
+</script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC15uvFS1TzmGhJIdsSr1e6TiRCkCC3cvc&libraries=places&callback=searchcity"></script>
 
 
 
@@ -44,7 +52,7 @@ if (!$result) {
 </div>
 <div class="row">
     <div class="col-lg-4">
-        <input class="form-control" name="filter_city" placeholder="Enter the city">
+        <input class="form-control" name="filter_city" id="search_city" placeholder="Enter the city">
     </div>
     <div class="col-lg-2">
         <button class="btn btn-primary"><span class="fa fa-filter"></span> Apply Filter</button>

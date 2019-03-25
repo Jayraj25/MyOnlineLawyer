@@ -4,7 +4,6 @@ $title = "Index";
 <?php include "header.php" ?>
 <?php include "dbcon.php" ?>
 
-
     <?php
     if ($_SESSION['is_logged_in']) {
         ?>
@@ -12,6 +11,17 @@ $title = "Index";
     <?php
 
 } else {
+?>
+	<script>
+function searchcity()
+{
+	var input=document.getElementById("search_city");
+	var autocomplete=new google.maps.places.Autocomplete(input);
+}
+</script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbM4WNoeWD3y5QjyLMS97Lm8w2Q06uslE&libraries=places&callback=searchcity"></script>
+<?php
+
     //echo "<h1>Hello Not</h1>";?>
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
@@ -54,7 +64,7 @@ $title = "Index";
 <div class="container">
     <div class="jumbotron" style="margin-top: 10px;">
         <div class="input-group">
-            <input type="text" class="form-control" placeholder="Type City (Ex: Chennai)">
+            <input type="text" class="form-control" id="search_city" placeholder="Type City (Ex: Chennai)">
             <div class="input-group-append">
                 <button class="btn btn-secondary" type="button">
                 <i class="fa fa-search"></i>
