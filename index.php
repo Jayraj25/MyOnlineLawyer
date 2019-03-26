@@ -19,7 +19,8 @@ function searchcity()
 	var autocomplete=new google.maps.places.Autocomplete(input);
 }
 </script>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbM4WNoeWD3y5QjyLMS97Lm8w2Q06uslE&libraries=places&callback=searchcity"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbM4WNoeWD3y5QjyLMS97Lm8w2Q06uslE&libraries=places&callback=searchcity">
+</script>
 <?php
 
     //echo "<h1>Hello Not</h1>";?>
@@ -79,7 +80,7 @@ function searchcity()
             <!--Card image-->
             <div class="view overlay">
                 <img class="card-img-top" src="static/onlinelegaladvice.jpg" alt="Card image cap" height="300">
-                <a href="#!">
+                <a href="ola.php">
                 <div class="mask rgba-white-slight"></div>
                 </a>
             </div>
@@ -92,7 +93,7 @@ function searchcity()
                 <!--Text-->
                 <p class="card-text">Want Some Advice?</p>
                 <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-                <button type="button" class="btn btn-primary">Ask Question</button>
+                <button type="button" class="btn btn-primary"><a class="text-white" href="ola.php">Ask Question</a></button>
         
             </div>
         
@@ -105,7 +106,7 @@ function searchcity()
             <!--Card image-->
             <div class="view overlay">
                 <img class="card-img-top" src="static/hireyourlawyer.jpg" alt="Card image cap" height="300">
-                <a href="#!">
+                <a href="lawyersview.php">
                 <div class="mask rgba-white-slight"></div>
                 </a>
             </div>
@@ -116,9 +117,9 @@ function searchcity()
                 <!--Title-->
                 <h4 class="card-title">Hire your Lawyer</h4>
                 <!--Text-->
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <p class="card-text">List of the Lawyers registered</p>
                 <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-                <button type="button" class="btn btn-primary">Read more</button>
+                <button type="button" class="btn btn-primary"><a class="text-white" href="lawyersview.php">View Lawyers</a></button>
         
             </div>
         
@@ -131,7 +132,7 @@ function searchcity()
             <!--Card image-->
             <div class="view overlay">
                 <img class="card-img-top" src="static/bidding.jpg" alt="Card image cap" height="300">
-                <a href="#!">
+                <a href="bidding.php">
                 <div class="mask rgba-white-slight"></div>
                 </a>
             </div>
@@ -142,9 +143,9 @@ function searchcity()
                 <!--Title-->
                 <h4 class="card-title">Legal Case Bidding</h4>
                 <!--Text-->
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <p class="card-text">Post your case here with the budget.</p>
                 <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-                <button type="button" class="btn btn-primary">Read more</button>
+                <button type="button" class="btn btn-primary"><a class="text-white" href="bidding.php">Post your Case</a></button>
         
             </div>
         
