@@ -26,6 +26,9 @@
 
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
+  <script src="http://code.jquery.com/jquery-3.3.1.min.js"
+		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+			  crossorigin="anonymous"></script>
 
 </head>
 
@@ -212,4 +215,23 @@
           </ul>
 
         </nav>
-      
+        <script>
+      setInterval(function(){
+      update_last_activity();
+    }, 5000);
+
+    function update_last_activity(){
+
+        $.ajax({
+          url:"update_last_activity.php",
+          method:"POST",
+          success:function(data){
+          
+          }
+        })
+
+        } 
+
+
+    </script>    
+  
