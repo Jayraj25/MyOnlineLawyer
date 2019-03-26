@@ -36,9 +36,9 @@ if (isset($_POST['submit'])) {
             $_SESSION['user_type'] = $row['type'];
             //Redirecting to the home page
             if($row['type']!=="Client"){
-            echo '<script>window.open("admin/blank.php","_self")</script>';
+            echo '<script>window.open("admin/index.php","_self")</script>';
             }else{
-            echo '<script>window.open("blank.php","_self")</script>';   
+            echo '<script>window.open("index.php","_self")</script>';   
             }
             //Now we can use these information in furthur pages 
         }
