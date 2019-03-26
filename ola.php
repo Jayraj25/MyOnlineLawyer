@@ -6,7 +6,7 @@ $title = "Online Legal Advice";
 
 <?php
     //Using Sessions
-if (!$_SESSION['is_logged_in']) {
+if (!$_SESSION['is_logged_in'] || $_SESSION['user_type']!=="Client") {
     echo '<script>window.open("login.php","_self")</script>';
 }
 ?>
