@@ -23,33 +23,7 @@ function searchcity()
     <h4>Advocate List</h4>
 </center>
 <br>
-<!-- Modal -->
-<div id="myModal1" class="modal fade" role="dialog">
-    <div class="modal-dialog">
 
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title"><span class="fa fa-pen "></span> POST Advice</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-
-            </div>
-            <div class="modal-body">
-                <form method="POST" action="post_answer.php">
-                    <input name="q_id" type="hidden">
-                    <input name="user_id" type="hidden" value="<?php echo $_SESSION['user_info']['id']; ?>">
-                    <div class="form-group">
-                        <label for="answer">Your Advice</label>
-                        <textarea class="form-control" id="answer" name="answer" rows="5"></textarea>
-                        <input type="text" placeholder="Total Char Count: 600" disabled>
-                    </div>
-                    <button type="submit" name="submit" class="form-control btn btn-primary">Submit</button>
-            </div>
-            </form>
-        </div>
-
-    </div>
-</div>
 <div class="row">
     <div class="col-lg-4">
         <input class="form-control" name="filter_city" id="search_city" placeholder="Enter the city">
