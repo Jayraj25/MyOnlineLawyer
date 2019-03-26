@@ -9,8 +9,8 @@ if(isset($_POST['submit'])){
     
     $user_id = $_SESSION['user_info']['id'];
     $title = mysqli_real_escape_string($connection, $_POST['title']);
-    $topic = mysqli_real_escape_string($connection, $_POST['budget']);
-    $budget = mysqli_real_escape_string($connection, $_POST['topic']);
+    $topic = mysqli_real_escape_string($connection, $_POST['topic']);
+    $budget = mysqli_real_escape_string($connection, $_POST['budget']);
     $des= mysqli_real_escape_string($connection, $_POST['desc']);
     $loc= mysqli_real_escape_string($connection, $_POST['location']);
     $total = count($_FILES['ref_file']['name']);
@@ -28,7 +28,7 @@ if(isset($_POST['submit'])){
             $tmpFilePath = $_FILES['ref_file']['tmp_name'][$i];
             if ($tmpFilePath != ""){
                 //Setup our new file path
-                $newFilePath = SITE_ROOT. "./uploadFiles/" . $_FILES['ref_file']['name'][$i];
+                $newFilePath = SITE_ROOT. "/admin/uploadFiles/" . $_FILES['ref_file']['name'][$i];
                 if(move_uploaded_file($tmpFilePath, $newFilePath)) {
                     $file_name = $_FILES['ref_file']['name'][$i];
                     $query = "INSERT INTO binding_ref_file(bid_id,file_name) VALUES('$b_id','$file_name')";
@@ -170,8 +170,21 @@ if(isset($_POST['submit'])){
         <div class="card mb-4" id="<?php echo $row['id'];?>">
           <div class="card-body">
             <h2 class="card-title"><?php echo $row['title'];?> 
+                <button class="btn btn-secondary btn-sm" style="float: right;" disabled>&nbsp;<?php echo $row['category'] ?></button>
+                &nbsp;&nbsp; 
+                <?php 
+                if ($row['status'] === "0") {
+                    ?>
                 <button class="btn btn-success btn-sm" style="float: right;"><span class="fa fa-gavel"></span>&nbsp;Bidding On</button>
-            </h2>
+                <?php
+
+            } else {
+                ?>
+                <button class="btn btn-danger btn-sm" style="float: right;"><span class="fa fa-gavel"></span>&nbsp;Bidding OFF</button>
+                <?php
+
+            } ?>
+        </h2>
             <hr>
             <p class="card-text"><strong>Problem Description</strong>
                 <br>
@@ -189,7 +202,7 @@ if(isset($_POST['submit'])){
                     while($row2  =  mysqli_fetch_assoc($result1))
                     {
                         ?>
-                        <li><a href="<?php echo 'uploadFiles/'.$row2['file_name'];?>" download>File<?php echo $row2['id']?></a></li>
+                        <li><a href="<?php echo 'admin/uploadFiles/'.$row2['file_name'];?>" download>File<?php echo $row2['id']?></a></li>
                         <?php
                     }?>
                 </ul>
@@ -198,7 +211,7 @@ if(isset($_POST['submit'])){
             
 
             </p>
-            <a href="#" class="btn btn-primary" style="float: right;"><span class="fa fa-rupee-sign"></span>&nbsp;<?php echo $row['description'];?> </a>
+            <a href="#" class="btn btn-primary" style="float: right;"><span class="fa fa-rupee-sign"></span>&nbsp;<?php echo $row['budget'];?> </a>
             <br>
             <br>
             <div class="card">
@@ -216,7 +229,7 @@ if(isset($_POST['submit'])){
                         </thead>
                         <tbody>
                             <?php 
-                            $query3 = "SELECT users.name as name,bid_made.price as price,bid_made.user_id as adv_id from bid_made,users where bid_made.user_id=users.id and bid_made.bid_id=".$row['id'] . " ";
+                            $query3 = "SELECT users.id as user_id,users.name as name,bid_made.price as price,bid_made.user_id as adv_id from bid_made,users where bid_made.user_id=users.id and bid_made.status='0' and  bid_made.bid_id=".$row['id'] . " ";
                             $result2 = mysqli_query($connection, $query3);
                             if (!$result2) {
                             die("QUERY FAILED " . mysqli_error($connection));
@@ -224,12 +237,12 @@ if(isset($_POST['submit'])){
                             while($row3 = mysqli_fetch_assoc($result2))
                             {
                             ?>
-                            <tr>
+                            <tr id="advo<?php echo $row3['user_id']?><?php echo $row['id']?>">
                                 <td scope="row"><?php echo $row3['name']?></td>
                                 <td><?php echo $row3['price']?></td>
                                 <?php 
                                     if($row['user_id'] === $_SESSION['user_info']['id']){
-                                echo '<td><button class="btn btn-md btn-info"><span class="fa fa-check-circle">&nbsp;Approve and Consult</button></td>';
+                                echo '<td><button onclick = "Approve('. $row3['user_id']. ',' .$row['id'] .')" class="btn btn-md btn-info"><span class="fa fa-check-circle">&nbsp;Approve and Consult</button></td>';
                                 }
                                 else{
                                     echo "<td>Not Allowed</td>";
@@ -323,5 +336,23 @@ if(isset($_POST['submit'])){
   </div>
   <!-- /.container -->
 
-
+<script>
+    function Approve(user_id,bid_id){
+        $.ajax({
+            method:"GET",
+            url: "approve_bid.php",
+            data:{
+                'user_id':user_id,
+                'bid_id':bid_id,
+            },
+            success: function (data) {
+                if(data){
+                alert("You have made the approval");
+                var id = 'advo'+user_id+bid_id;
+                document.getElementById(id).style.display = "none";
+                }
+            }
+        })
+    }
+</script>
 <?php include "footer.php" ?>
