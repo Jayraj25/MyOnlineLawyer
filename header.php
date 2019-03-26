@@ -89,6 +89,11 @@
               if($_SESSION['user_type']!=="Client"){
                 header("location:/project/admin/blank.php");
               }
+              else{
+                echo "<li class='nav-item '>
+            <a class='nav-link' href='logout.php'><span class='fa fa fa-reply'></span> Logout</a>
+          </li>";
+              }
           } else {
             echo "<li class='nav-item '>
             <a class='nav-link' href='login.php'><span class='fa fa fa-reply'></span> Login</a>
