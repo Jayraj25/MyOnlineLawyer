@@ -26,9 +26,42 @@ if(isset($_POST['submit']))
     if (!$result) {
         die("QUERY FAILED " . mysqli_error($connection));
     }
-
-
 }
+
+ //image storing in DB
+
+if(isset($_POST['but_upload'])){
+ 
+    $name = $_FILES['file']['name'];
+    $id=$_SESSION['user_info']['id'];
+    $target_dir = "Uploads/";
+    $target_file = $target_dir . basename($_FILES["file"]["name"]);
+  
+    // Select file type
+    $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+  
+    // Valid file extensions
+    $extensions_arr = array("jpg","jpeg","png","gif");
+  
+    // Check extension
+    if( in_array($imageFileType,$extensions_arr) ){
+   
+      // Convert to base64 
+      $image_base64 = base64_encode(file_get_contents($_FILES['file']['tmp_name']));
+      $image = 'data:image/' . $imageFileType . ';base64,' . $image_base64;
+      // Insert record
+      $query = "insert into images(profileid,image) values('$id','$image')";
+      $result = mysqli_query($connection,$query);
+      if (!$result) {
+        die("QUERY FAILED " . mysqli_error($connection));
+    }
+
+    
+      // Upload file
+      move_uploaded_file($_FILES['file']['tmp_name'],$target_dir.$name);
+    }
+   
+  }
 ?>
 
 <div class="container-fluid">
@@ -41,7 +74,22 @@ if(isset($_POST['submit']))
     <div class="card shadow md-4">
         <div class="row" style="margin:20px;">
             <div class="col-lg-4">
-                <img src="imgs/profile.png" class="img-circle" alt="Cinque Terre" width="200" height="200">
+            <?php
+            $id = $_SESSION['user_info']['id'];
+            $sql = "select image from images where profileid='".$id."'";
+            $result = mysqli_query($connection,$sql);
+            $row = mysqli_fetch_array($result);
+
+            $image_src2 = $row['image'];
+            
+            ?>
+                <img src='<?php echo $image_src2; ?>' class="img-circle" alt="Cinque" width="200" height="200"><br><br>
+                <form method="post" action="userprofile.php" enctype='multipart/form-data'>
+                    <div class="form-group">
+                        <input type="file" class="form-control-file" name="file" id="file" />
+                        <input type='submit'  value='Save name' name='but_upload'>
+                    </div>
+                </form>
             </div>
             <div class="col-lg-5" style="margin-top:30px;">
                 <?php
