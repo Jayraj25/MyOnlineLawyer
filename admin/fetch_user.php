@@ -2,7 +2,7 @@
 
 <?php
 session_start();
-$query ="SELECT * FROM users WHERE id != '".$_SESSION['user_info']['id']."'";
+$query ="SELECT distinct users.id as id ,users.name as name FROM users,bid_made  WHERE users.id=bid_made.user_id and bid_made.status='1' and users.id != '".$_SESSION['user_info']['id']."'";
 $result = mysqli_query($connection, $query);
     if (!$result) {
         die("QUERY FAILED " . mysqli_error($connection));

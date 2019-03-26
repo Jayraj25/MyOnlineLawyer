@@ -22,12 +22,12 @@ if (isset($_POST['submit'])) {
     }
     if (mysqli_num_rows($result) <= 0) {
         $username_error = "Username does not exists";
-        echo $username_error;
+        echo "<script>alert('$username_error')</script>";
     } else {
         $row = mysqli_fetch_assoc($result);
         if ($row['password'] != $encript_pwd) {
             $pwd_error = "Invalid Password";
-            echo $pwd_error;
+            echo "<script>alert('$pwd_error')</script>";
         } else {
             echo "You are Successfully logged in";
             //Saving the information in the sessions

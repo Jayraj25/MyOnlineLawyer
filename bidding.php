@@ -3,6 +3,13 @@ $title = "Bidding System";
 ?>
 <?php include "header.php" ?>
 <?php include "dbcon.php" ?>
+
+
+<?php
+if(!$_SESSION['is_logged_in']){
+    header("location:/project/login.php");
+}
+?>
 <?php 
 define ('SITE_ROOT', realpath(dirname(__FILE__)));
 if(isset($_POST['submit'])){

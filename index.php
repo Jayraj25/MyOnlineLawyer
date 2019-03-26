@@ -4,14 +4,7 @@ $title = "Index";
 <?php include "header.php" ?>
 <?php include "dbcon.php" ?>
 
-    <?php
-    if ($_SESSION['is_logged_in']) {
-        ?>
-        <h1>Hello</h1>
-    <?php
-
-} else {
-?>
+   
 	<script>
 function searchcity()
 {
@@ -316,10 +309,7 @@ function searchcity()
                 
                 </div>
     </div>
-<?php
-}
-?>
-    
+ 
 </div>
 
 <?php include "footer.php" ?>
