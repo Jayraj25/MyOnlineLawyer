@@ -34,6 +34,13 @@ if (isset($_POST['submit'])) {
             $_SESSION['is_logged_in'] = true;
             $_SESSION['user_info'] = $row;
             $_SESSION['user_type'] = $row['type'];
+            $user_id = $row['id'];
+            $sub_query = "INSERT INTO login_details(user_id) VALUES('$user_id')";
+            $result = mysqli_query($connection, $sub_query);
+            if (!$result) {
+            die("QUERY FAILED " . mysqli_error($connection));
+            }
+            
             //Redirecting to the home page
             if($row['type']!=="Client"){
             echo '<script>window.open("admin/index.php","_self")</script>';
