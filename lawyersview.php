@@ -78,7 +78,7 @@ $title = "Lawyers View";
                     </div>
                     <div class="col-lg-4" style="margin-top:20px;">
                     <?php
-                    $query1 = "select * from users,adv_profile where users.id=adv_profile.id and users.username ='".$rows['username']."' ";
+                    $query1 = "select u.name as name,ap.pcity as pcity,ap.exp as exp,ap.spec as spec,ap.lang as lang from users as u,adv_profile as ap where u.id=ap.id and u.username ='".$rows['username']."' ";
                     
                     $result1 = mysqli_query($connection,$query1);
                     if (!$result1) {
@@ -87,11 +87,11 @@ $title = "Lawyers View";
 
                     while($rows1 = mysqli_fetch_assoc($result1))
                     {
-                        echo "<p><b>Name</b> : $rows1[name]</p>";
-                        echo "<p><b>Location</b> : $rows1[pcity]</p>";
-                        echo "<p><b>Experience(in years)</b> : $rows1[exp]</p>";
-                        echo "<p><b>Specialities</b> : $rows1[spec]</p>";
-                        echo "<p><b>Languages Known</b> : $rows1[lang]</p>";
+                        echo "<p><b>Name</b> :". $rows1['name']."</p>";
+                        echo "<p><b>Location</b> :". $rows1['pcity']."</p>";
+                        echo "<p><b>Experience(in years)</b> :" .$rows1['exp']."</p>";
+                        echo "<p><b>Specialities</b> :" .$rows1['spec']."</p>";
+                        echo "<p><b>Languages Known</b> : ".$rows1['lang']."</p>";
                     }?>
                     </div>
                     <div class="col-lg-3" style="margin-top:20px;">
