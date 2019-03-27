@@ -7,9 +7,8 @@ $title = "Sign Up";
 
     //Using Sessions
 if (!$_SESSION['is_logged_in']) {
-
+   
     if (isset($_POST['submit'])) {
-
         $name = $_POST['name'];
         $user_name = $_POST['user_name'];
         $pass = $_POST['pass'];
@@ -37,6 +36,7 @@ if (!$_SESSION['is_logged_in']) {
         }
         if (mysqli_num_rows($result) > 0) {
             $username_error = "Username alredy exist";
+            echo "<script>alert('$username_error');</script>";
             $errors = true;
         }
         //Mobile No check 
@@ -48,7 +48,7 @@ if (!$_SESSION['is_logged_in']) {
 
         if (mysqli_num_rows($result) > 0) {
             $mobileNo_error = "Mobile Number alredy exist";
-            echo $mobileNo_error;
+            echo "<script>alert('$mobileNo_error');</script>";
             $errors = true;
         }
         //Email check 
@@ -69,7 +69,7 @@ if (!$_SESSION['is_logged_in']) {
             $otp = rand(500000, 999999);
             $message = urlencode("User Verification OTP for MyOnlineLawyer is " . $otp);
             $url = "http://sambsms.com/app/smsapi/index.php?key=558CA4B80010C7&campaign=0&routeid=26&type=text&contacts=$mobnum&senderid=COMEXc&msg=$message";
-            //$response = file_get_contents($url);
+            $response = file_get_contents($url);
             $_SESSION['otp'] = $otp;
             echo '<script>window.open("otp_verification.php","_self")</script>';
 
@@ -100,14 +100,14 @@ else {
 </head>
 
 <body>
-<form name="reg_form" action="signup.php" onsubmit="return validation()" method="POST">
+
     <div class="page-wrapper bg-gra-01 p-t-180 p-b-100 font-poppins">
         <div class="wrapper wrapper--w780">
             <div class="card card-3">
                 <div class="card-heading"></div>
                 <div class="card-body">
                     <h2 class="title">Registration Info</h2>
-                    <form method="POST">
+                    <form name="reg_form" action="signup.php" onsubmit="return validation()" method="POST">
                         <div class="input-group">
                             <input class="input--style-3" id="my_name" type="text" placeholder="Name" name="name">
                         </div>
@@ -115,10 +115,10 @@ else {
                             <input class="input--style-3" id="u_name" type="text" placeholder="Username" name="user_name">
                         </div>
                         <div class="input-group">
-                                <input class="input--style-3" id="my_pass" type="text" placeholder="Password" name="pass">
+                                <input class="input--style-3" id="my_pass" type="password" placeholder="Password" name="pass">
                         </div>
                         <div class="input-group">
-                                <input class="input--style-3" id="conf_my_pass" type="text" placeholder="Confirm Password" name="conf_pass">
+                                <input class="input--style-3" id="conf_my_pass" type="password" placeholder="Confirm Password" name="conf_pass">
                         </div>
                         <div class="input-group">
                                 <input class="input--style-3" type="" id="my_mobnum" placeholder="Mobile No" name="mobnum">
@@ -241,13 +241,6 @@ function validation()
         password.focus(); 
         return false;
     } 
-    if(document.reg_form.type.selectedIndex==0)
-    {
-          alert("Please enter your type(advocate or client)"); 
-        type.focus(); 
-        return false;
-    } 
-   
     return true;
 }
 </script>

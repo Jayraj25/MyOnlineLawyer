@@ -29,7 +29,13 @@ if (isset($_POST['submit'])) {
             $_SESSION['is_logged_in'] = true;
             $_SESSION['user_type'] = $row['type'];
             $_SESSION['user_info'] = $row;
-            echo "<script>window.open('blank.php','_self')</script>";
+            $user_id = $row['id'];
+            $sub_query = "INSERT INTO login_details(user_id) VALUES('$user_id')";
+            $result = mysqli_query($connection, $sub_query);
+            if (!$result) {
+            die("QUERY FAILED " . mysqli_error($connection));
+            }
+            echo "<script>window.open('index.php','_self')</script>";
         }
     } else {
         $error = "Please provide valid OTP";
@@ -70,7 +76,7 @@ if (!$_SESSION['is_logged_in']) {
 <?php
 
 } else {
-    echo "<script>window.open('blank.php','_self')</script>";
+    echo "<script>window.open('index.php','_self')</script>";
 }
 ?>
 

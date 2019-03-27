@@ -51,6 +51,9 @@
               else{
                 echo "<li class='nav-item '>
             <a class='nav-link' href='logout.php'><span class='fa fa fa-reply'></span> Logout</a>
+          </li>
+          <li class='nav-item '>
+            <a class='nav-link' href='admin/client_chat.php'><span class='fa fa fa-dashboard'></span> Dashboard</a>
           </li>";
               }
           } else {
