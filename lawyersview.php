@@ -55,7 +55,7 @@ $title = "Lawyers View";
                     }?>
                     </div>
                     <div class="col-lg-3" style="margin-top:20px;">
-                        <button class="btn btn-primary" name="consult"><i class="fas fa-1x fa-handshake"></i>&nbsp;&nbsp;Consult</button>
+                            <button id="c<?php echo $rows1['id'];?>" onclick="consult(<?php echo $rows1['id'];?>)" class="btn btn-primary" name="consult"><i class="fas fa-1x fa-handshake"></i>&nbsp;&nbsp;Consult</button>
                     </div>
                 </div>
             </div>
@@ -78,7 +78,7 @@ $title = "Lawyers View";
                     </div>
                     <div class="col-lg-4" style="margin-top:20px;">
                     <?php
-                    $query1 = "select u.name as name,ap.pcity as pcity,ap.exp as exp,ap.spec as spec,ap.lang as lang from users as u,adv_profile as ap where u.id=ap.id and u.username ='".$rows['username']."' ";
+                    $query1 = "select u.id as id, u.name as name,ap.pcity as pcity,ap.exp as exp,ap.spec as spec,ap.lang as lang from users as u,adv_profile as ap where u.id=ap.id and u.username ='".$rows['username']."' ";
                     
                     $result1 = mysqli_query($connection,$query1);
                     if (!$result1) {
@@ -92,11 +92,14 @@ $title = "Lawyers View";
                         echo "<p><b>Experience(in years)</b> :" .$rows1['exp']."</p>";
                         echo "<p><b>Specialities</b> :" .$rows1['spec']."</p>";
                         echo "<p><b>Languages Known</b> : ".$rows1['lang']."</p>";
-                    }?>
+                        
+                    ?>
                     </div>
                     <div class="col-lg-3" style="margin-top:20px;">
-                        <button class="btn btn-primary" name="consult"><i class="fas fa-1x fa-handshake"></i>&nbsp;&nbsp;Consult</button>
+                        <button id="c<?php echo $rows1['id'];?>" onclick='consult("<?php echo $rows1['id'];?>")' class="btn btn-primary" name="consult"><i class="fas fa-1x fa-handshake"></i>&nbsp;&nbsp;Consult</button>
                     </div>
+                    <?php
+                }?>
                 </div>
             </div>
             <?php
@@ -109,6 +112,25 @@ $title = "Lawyers View";
         </div>
     </div>
 </div>
+<script>
+    function consult(id){
+        
+        $.ajax({
+        url:"consult.php",
+        method:"GET",
+        data:{
+            'adv_id':id,
+        },
+        success:function(data){
+        if(data){
+            var id = data.trim();
+            document.getElementById(id).innerHTML="Consulted";
+            document.getElementById(id).disabled="True";
+        }
+   }
+  })
+    }
+    </script>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbM4WNoeWD3y5QjyLMS97Lm8w2Q06uslE&libraries=places&callback=searchcity">
 </script>
 <script>

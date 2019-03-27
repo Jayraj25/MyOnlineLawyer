@@ -3,13 +3,6 @@ $title = "Bidding System";
 ?>
 <?php include "header.php" ?>
 <?php include "dbcon.php" ?>
-
-
-<?php
-if(!$_SESSION['is_logged_in']){
-    header("location:/project/login.php");
-}
-?>
 <?php 
 define ('SITE_ROOT', realpath(dirname(__FILE__)));
 if(isset($_POST['submit'])){
@@ -76,7 +69,7 @@ if(isset($_POST['submit'])){
             <div class="modal-body">
                 <div class="row">
                     <div class="col-lg-8">
-                    <form action="bidding.php" method="POST" enctype="multipart/form-data">
+                    <form name="reg_form" onsubmit="return validation()" action="bidding.php" method="POST" enctype="multipart/form-data">
                         <div class="form-group">
                           <label for="title">Title</label>
                           <input type="text" class="form-control" name="title" id="title" placeholder="Enter the title..">
@@ -89,7 +82,7 @@ if(isset($_POST['submit'])){
                         <div class="form-group">
                                 <label for="topic">Topic</label>
                                 <select id="topic" name="topic" class="form-control">
-                                    <option>[Choose One]</option>
+                                    <option disabled="disabled" selected="selected">Select</option>
                                     <option>Accident</option>
                                     <option>ANY</option>
                                     <option>Banking</option>
@@ -361,5 +354,53 @@ if(isset($_POST['submit'])){
             }
         })
     }
+</script>
+<script>
+function validation()                                    
+    { 
+    var budget = document.forms["reg_form"]["budget"];               
+    var title = document.forms["reg_form"]["title"];    
+    var desc = document.forms["reg_form"]["desc"];  
+    var location =  document.forms["reg_form"]["location"];  
+    var topic = document.forms["reg_form"]["topic"]
+    if (title.value == "")                               
+    { 
+        window.alert("Enter title"); 
+        uname.focus(); 
+        return false; 
+    }
+    if (budget.value == "")                                  
+    { 
+        window.alert("Please enter your budget");
+        return false; 
+    } 
+    if(document.reg_form.topic.selectedIndex==0)
+    {
+        alert("Please enter your topic"); 
+        type.focus(); 
+        return false;
+    }
+    if (location.value == "")                        
+    { 
+        window.alert("Please enter your location"); 
+        cpassword.focus(); 
+        return false; 
+    } 
+     
+    if(document.reg_form.topic.selectedIndex==0)
+    {
+        alert("Please enter your topic"); 
+        type.focus(); 
+        return false;
+    }
+	if (desc.value == "")                        
+    { 
+        window.alert("Please enter case description"); 
+        password.focus(); 
+        return false; 
+    } 
+   
+    return true;
+}
 </script>
 <?php include "footer.php" ?>

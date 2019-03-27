@@ -194,7 +194,7 @@ if(isset($_POST['but_upload'])){
                             </div>
                             <div class="form-group">
                             <label for="add">Address</label>
-                                <textarea class="form-control"  id="add" name="add" placeholder="Type here to see how it work" rows="5" onkeydown="limitText(this.form.description,this.form.countdown,600);" onkeyup='limitText(this.form.description,this.form.countdown,600);'>	
+                                <textarea class="form-control"  id="add" name="add" placeholder="Type here to see how it work" rows="5" onkeydown="limitText(this.form.add,this.form.countdown,600);" onkeyup='limitText(this.form.add,this.form.countdown,600);'>	
                                 </textarea>You have<input readonly type="text" name="countdown" size="3" value="600"> chars left
                             </div>
     
@@ -210,4 +210,73 @@ if(isset($_POST['but_upload'])){
         </div>
         <!--Modal Ends-->
 </div>
+<script>
+    function validation()
+    {
+	var area = document.forms["advice"]["area"];               
+    var topic = document.forms["advice"]["pin"];    
+    var city = document.forms["advice"]["city"];
+    var education = document.forms["advice"]["education"];
+    var exp = document.forms["advice"]["exp"];
+    var spec = document.forms["advice"]["spec"];
+    var language = document.forms["advice"]["language"];
+    var barconc = document.forms["advice"]["barcounc"];
+    var add = document.forms["advice"]["add"]; 
+    if (area.value == "")                                  
+    { 
+        window.alert("Please enter area");
+        return false; 
+    } 
+    if (topic.value == "")                                  
+    { 
+        window.alert("Please enter topic");
+        return false; 
+    }
+    if((topic.value.length <= 2) || (topic.value.length > 20)) {
+		alert("heading lenght must be between 2 and 20"); 
+        heading.focus(); 
+        return false;		
+	}
+	if (city.value == "")                                  
+    { 
+        window.alert("Please enter city");
+        return false; 
+    } 
+    
+    if (education.value == "")                                  
+    { 
+        window.alert("Please enter education details");
+        return false; 
+    }  
+	
+    if (exp.value == "")                                  
+    { 
+        window.alert("Please enter experience");
+        return false; 
+    } 
+    
+    if (spec.value == "")                                  
+    { 
+        window.alert("Please enter specialization");
+        return false; 
+    }
+    if (language.value == "")                                  
+    { 
+        window.alert("Please enter language");
+        return false; 
+    }  
+    if (barconc.value == "")                                  
+    { 
+        window.alert("Please enter Bar Council Number");
+        return false; 
+    } 
+}
+	function limitText(limitField, limitCount, limitNum) {
+          if (limitField.value.length > limitNum) {
+            limitField.value = limitField.value.substring(0, limitNum);
+          } else {
+            limitCount.value = limitNum - limitField.value.length;
+          }
+        }
+</script>
 <?php include "admin_footer.php" ?>
